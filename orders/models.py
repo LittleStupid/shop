@@ -18,10 +18,15 @@ class Order(models.Model):
     class Meta:
         ordering = ('-created',)
 
+    def list_all_member(self):
+        for name, value in vars(self).items():
+            print('%s=%s' % (name, value))
+
     def __str__(self):
         return 'Order {}'.format(self.id)
 
     def get_total_cost(self):
+        print('begin get total cost')
         return sum(item.get_cost() for item in self.items.all())
 
 
