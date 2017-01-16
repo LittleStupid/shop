@@ -13,11 +13,6 @@ def payment_process(request):
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
     host = request.get_host()
-    print('---')
-    print(host)
-    print('---')
-    print(order.id)
-    print('---')
 
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
